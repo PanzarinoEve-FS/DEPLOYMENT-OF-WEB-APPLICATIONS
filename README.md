@@ -1,11 +1,11 @@
-# DEPLOYMENT-OF-WEB-APPLICATIONS
+# Deployment-of-Web-Applications
 
 A bare-bones static site built with [Next.js](https://nextjs.org) and served under `/app/`, next to a [Jekyll](https://jekyllrb.com) site at the main URL. Both are deployed to GitHub Pages.
 
 | Apps             | URLs                                                                  |
 | ---------------- | --------------------------------------------------------------------- |
-| **Next.js site** | https://panzarinoeve-fs.github.io/DEPLOYMENT-OF-WEB-APPLICATIONS/app/ |
-| **Jekyll site**  | https://panzarinoeve-fs.github.io/DEPLOYMENT-OF-WEB-APPLICATIONS/     |
+| **Next.js site** | https://panzarinoeve-fs.github.io/Deployment-of-Web-Applications/app/ |
+| **Jekyll site**  | https://panzarinoeve-fs.github.io/Deployment-of-Web-Applications/     |
 
 ## What's where
 
@@ -28,7 +28,7 @@ npm install
 npm run dev
 ```
 
-Then open http://localhost:3000/DEPLOYMENT-OF-WEB-APPLICATIONS/app. The page updates each time you save a file.
+Then open http://localhost:3000/Deployment-of-Web-Applications/app. The page updates each time you save a file.
 
 | Command         | What it does                         |
 | --------------- | ------------------------------------ |
@@ -69,7 +69,7 @@ The `4.0.0` in the path depends on the Ruby version Homebrew installs. If yours 
 
 Every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml):
 
-1. **Jekyll** builds `jekyll/` into `jekyll/_site/`, with the base URL set to `/DEPLOYMENT-OF-WEB-APPLICATIONS` so links and CSS work on github.io.
+1. **Jekyll** builds `jekyll/` into `jekyll/_site/`, with the base URL set to the repo's Pages path, `/Deployment-of-Web-Applications`, so links and CSS work on github.io.
 2. **Next.js** builds the site at the repo root into `out/` as plain HTML, CSS and JavaScript, because `next.config.ts` sets `output: "export"`.
 3. `out/` is copied to `jekyll/_site/app/`.
 4. `jekyll/_site/` is published to GitHub Pages.
@@ -80,11 +80,12 @@ The repo's Pages source must be set to **GitHub Actions** (Settings â†’ Pages â†
 
 ### Things to know
 
-- `basePath` in `next.config.ts` is `/DEPLOYMENT-OF-WEB-APPLICATIONS/app` because GitHub Pages serves the repo from `/DEPLOYMENT-OF-WEB-APPLICATIONS/` and the Next.js site lives under `/app/`. Change it if the repo is renamed or the site moves.
+- GitHub Pages serves the site from a path named after the repo, `/Deployment-of-Web-Applications/`, and the path is case-sensitive. Renaming the repo moves the site to a new address, and the old address stops working.
+- `basePath` in `next.config.ts` is that path plus `/app`. The deploy workflow passes the path in `PAGES_BASE_PATH`, and the Jekyll build gets it the same way, so both sites follow a rename on their next deploy. Builds on your computer use the repo name written in `next.config.ts`, so update it there after a rename.
 - `next/link` adds the base path to links automatically, but `next/image` doesn't. For images in `public/`, start `src` with `process.env.BASE_PATH`, as `app/page.tsx` does.
 - A static export can't use Next.js features that need a server, such as cookies, redirects, Server Actions or image resizing. See [Unsupported features](https://nextjs.org/docs/app/guides/static-exports#unsupported-features) in the Next.js docs.
 - There's no `npm start`. `next start` runs a Next.js server, and this project builds static files only.
-- In Jekyll pages and templates, build links with `relative_url`, for example `{{ "/about/" | relative_url }}`, so they include the `/DEPLOYMENT-OF-WEB-APPLICATIONS` prefix. A hardcoded leading `/` breaks on GitHub Pages.
+- In Jekyll pages and templates, build links with `relative_url`, for example `{{ "/about/" | relative_url }}`, so they include the `/Deployment-of-Web-Applications` prefix. A hardcoded leading `/` breaks on GitHub Pages.
 - Don't give any Jekyll page the `/app/` path. The Next.js site is copied there.
 - The Jekyll site's title, footer text and footer links are set in `jekyll/_config.yml`: `title`, `author`, `student_number`, `school_lines`, `email`, `course_dates`, `github_username`, `github_username_heading`, `github_links`, `footer_lines` and `course_modules`. Each module's `url` sets where its footer link goes. The top menu lists only the pages in `header_pages`. `jekyll/_includes/footer.html` and `jekyll/_includes/social.html` are copies of the theme's templates, changed to show these settings.
 - CSS changes for the Jekyll site go in `jekyll/assets/main.scss`, after `@import "minima"`. It widens the layout to 1400px and makes the footer three equal columns on screens wider than 800px. Don't edit `jekyll/_site/assets/main.css`, which every build rewrites.
@@ -98,7 +99,7 @@ The repo's Pages source must be set to **GitHub Actions** (Settings â†’ Pages â†
 
 The Next.js site began as the default `create-next-app` 16.4.6 starter. Changes since then:
 
-- `next.config.ts`: turned on static export, set the base path to `/DEPLOYMENT-OF-WEB-APPLICATIONS/app`, and turned off image optimization, which needs a server.
+- `next.config.ts`: turned on static export, set the base path to `/Deployment-of-Web-Applications/app`, and turned off image optimization, which needs a server.
 - `next.config.ts`: turned off `cacheComponents` and `partialPrefetching`. The starter enables them, but they need a server and make a static export fail.
 - `app/page.tsx`: added the base path to the image paths so the images load on GitHub Pages.
 - `package.json`: removed the `start` script, which can't run with a static export.

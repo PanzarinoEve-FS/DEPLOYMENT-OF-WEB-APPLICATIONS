@@ -1,9 +1,13 @@
 import type { NextConfig } from "next";
 
-// GitHub Pages serves this repo's site from /DEPLOYMENT-OF-WEB-APPLICATIONS/.
-// The Jekyll site (in jekyll/) owns that root, so this site lives under /app/,
-// and every page and asset URL needs this prefix. Update it if the repo is renamed.
-const basePath = "/DEPLOYMENT-OF-WEB-APPLICATIONS/app";
+// GitHub Pages serves this repo's site from /<repo name>/, and the Jekyll site
+// (in jekyll/) owns that root, so this site lives under /app/. Every page and
+// asset URL needs this prefix. The deploy workflow passes the real Pages path
+// in PAGES_BASE_PATH, so a renamed repo keeps working; builds on your computer
+// fall back to the current repo name.
+const pagesBasePath =
+  process.env.PAGES_BASE_PATH ?? "/Deployment-of-Web-Applications";
+const basePath = `${pagesBasePath}/app`;
 
 const nextConfig: NextConfig = {
   // Build a fully static site (plain HTML, CSS and JS) into out/.

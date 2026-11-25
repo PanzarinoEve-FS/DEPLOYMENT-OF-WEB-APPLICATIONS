@@ -41,8 +41,9 @@ jobs:
 
       - name: Build Jekyll site
         working-directory: jekyll
-        # base_path is /DEPLOYMENT-OF-WEB-APPLICATIONS, the sub-path Pages
-        # serves this repo from, so the theme's CSS and links resolve.
+        # base_path is the sub-path Pages serves this repo from (the repo
+        # name, e.g. /Deployment-of-Web-Applications), so the theme's CSS and
+        # links resolve.
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
@@ -58,6 +59,10 @@ jobs:
 
       - name: Build Next.js site
         run: npm run build
+        env:
+          # next.config.ts adds /app to this, so the site follows the repo
+          # name even if the repo is renamed.
+          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
 
       # Runs after the Jekyll build because Jekyll empties jekyll/_site/ first.
       - name: Add Next.js site under /app/
