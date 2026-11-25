@@ -1,7 +1,8 @@
 {%- comment -%}
-  Copied from minima 2.5.2's _includes/footer.html. Changed: the third
-  column shows footer_lines and course_modules from _config.yml, one per
-  line, instead of site.description.
+  Copied from minima 2.5.2's _includes/footer.html. Changed: the first
+  column also shows student_number and course_dates from _config.yml, and
+  the third column shows footer_lines and course_modules, one per line,
+  instead of site.description.
 {%- endcomment -%}
 <footer class="site-footer h-card">
   <data class="u-url" href="{{ "/" | relative_url }}"></data>
@@ -20,8 +21,14 @@
               {{ site.title | escape }}
             {%- endif -%}
             </li>
+            {%- if site.student_number -%}
+            <li class="student-number"><p>#{{ site.student_number | escape }}</p></li>
+            {%- endif -%}
             {%- if site.email -%}
             <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+            {%- endif -%}
+            {%- if site.course_dates -%}
+            <li><p>{{ site.course_dates | escape }}</p></li>
             {%- endif -%}
         </ul>
       </div>
