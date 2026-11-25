@@ -26,7 +26,7 @@
             <li class="student-number"><p>#{{ site.student_number | escape }}</p></li>
             {%- endif -%}
             {%- for line in site.school_lines -%}
-            <li><p>{{ line | escape }}</p></li>
+            <li>{{ line | escape }}</li>
             {%- endfor -%}
             {%- if site.email -%}
             <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>

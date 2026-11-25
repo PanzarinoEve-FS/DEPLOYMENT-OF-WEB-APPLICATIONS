@@ -47,9 +47,7 @@ github_links:
 # without is plain text. A url can be a path on this site, like /app/, or a
 # full https:// address.
 footer_lines:
-  - Full Sail University
-  - Web Development Bachelors
-  - "Deployment of Web Applications:"
+  - "Module Directory:"
 course_modules:
   - title: Module 1
     url: /module-1/
