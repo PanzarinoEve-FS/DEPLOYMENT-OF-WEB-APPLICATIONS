@@ -2,9 +2,9 @@
 
 A [Jekyll](https://jekyllrb.com) site, plus a React app built with [Vite](https://vite.dev) under `/app/`, both deployed to GitHub Pages.
 
-| Site paths                                                                   | URLs                              |
+| Site apps                                                                   | URLs                              |
 | ------------------------------------------------------------------------ | ----------------------------------------------- |
-| **Jekyll site:** | https://panzarinoeve-fs.github.io/DEPLOYMENT-OF-WEB-APPLICATIONS/ |
+| **Jekyll site app:** | https://panzarinoeve-fs.github.io/DEPLOYMENT-OF-WEB-APPLICATIONS/ |
 | **React app:** | https://panzarinoeve-fs.github.io/DEPLOYMENT-OF-WEB-APPLICATIONS/app/ |
 
 ## What's where
