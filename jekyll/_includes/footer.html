@@ -1,0 +1,52 @@
+{%- comment -%}
+  Copied from minima 2.5.2's _includes/footer.html. Changed: the third
+  column shows footer_lines and course_modules from _config.yml, one per
+  line, instead of site.description.
+{%- endcomment -%}
+<footer class="site-footer h-card">
+  <data class="u-url" href="{{ "/" | relative_url }}"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">{{ site.title | escape }}</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">
+            {%- if site.author -%}
+              {{ site.author | escape }}
+            {%- else -%}
+              {{ site.title | escape }}
+            {%- endif -%}
+            </li>
+            {%- if site.email -%}
+            <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+            {%- endif -%}
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        {%- include social.html -%}
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>
+          {%- for line in site.footer_lines -%}
+            {{ line | escape }}<br>
+          {%- endfor -%}
+          {%- for module in site.course_modules -%}
+            {%- if module.url -%}
+              <a href="{{ module.url | relative_url }}">{{ module.title | escape }}</a>
+            {%- else -%}
+              {{ module.title | escape }}
+            {%- endif -%}
+            {%- unless forloop.last -%}<br>{%- endunless -%}
+          {%- endfor -%}
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
