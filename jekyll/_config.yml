@@ -23,12 +23,13 @@ author: Eve Panzarino
 # Shown in the footer under the author's name, after a "#". Keep the quotes
 # so YAML keeps the leading zeros.
 student_number: "0004828216"
-# Shown in the footer under the student number, one per line.
+email: jnhankins@student.fullsail.edu
+# Shown in the footer under the email address, one per line.
 school_lines:
   - Full Sail University
   - Web Development Bachelors
-email: jnhankins@student.fullsail.edu
-# Shown in the footer under the email address.
+  - Deployment of Web Applications
+# Shown in the footer under the school lines.
 course_dates: "Nov 23rd, 2026 - Dec 20th, 2026"
 # Used in the page's <title> and search-result description, and in feed.xml.
 description: Full Sail University - Web Development Bachelors

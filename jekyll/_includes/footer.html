@@ -23,16 +23,16 @@
             {%- endif -%}
             </li>
             {%- if site.student_number -%}
-            <li class="student-number"><p>#{{ site.student_number | escape }}</p></li>
+            <li class="student-number">#{{ site.student_number | escape }}</li>
+            {%- endif -%}
+            {%- if site.email -%}
+            <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
             {%- endif -%}
             {%- for line in site.school_lines -%}
             <li>{{ line | escape }}</li>
             {%- endfor -%}
-            {%- if site.email -%}
-            <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-            {%- endif -%}
             {%- if site.course_dates -%}
-            <li><p>{{ site.course_dates | escape }}</p></li>
+            <li>{{ site.course_dates | escape }}</li>
             {%- endif -%}
         </ul>
       </div>
