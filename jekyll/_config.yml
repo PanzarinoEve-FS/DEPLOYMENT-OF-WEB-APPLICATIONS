@@ -35,11 +35,15 @@ description: Full Sail University - Web Development Bachelors
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: PanzarinoEve-FS
+# Shown above the footer's GitHub links.
+github_username_heading: "Student Github:"
 
-# More GitHub links for the footer, shown under github_username.
+# More GitHub links for the footer, shown under github_username, each with
+# an optional heading above it.
 # (_includes/social.html adds these; minima itself shows only one.)
 github_links:
-  - label: EvePanzarino
+  - heading: "Main Github:"
+    label: EvePanzarino
     url: https://github.com/evepanzarino
 
 # The footer's third column (_includes/footer.html): each footer line on its
