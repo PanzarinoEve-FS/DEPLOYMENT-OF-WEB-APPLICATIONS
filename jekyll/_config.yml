@@ -43,7 +43,7 @@ footer_lines:
   - "Deployment of Web Applications:"
 course_modules:
   - title: Module 1
-    url: /app/
+    url: /module-1/
   - title: Module 2
     url: /module-2/
   - title: Module 3
