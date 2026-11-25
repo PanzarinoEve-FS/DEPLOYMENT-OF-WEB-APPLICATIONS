@@ -63,3 +63,4 @@ The project began as the default `create-next-app` 16.4.6 starter. Changes since
 - `next.config.ts`: turned off `cacheComponents` and `partialPrefetching`. The starter enables them, but they need a server and make a static export fail.
 - `app/page.tsx`: added the base path to the image paths so the images load on GitHub Pages.
 - `package.json`: removed the `start` script, which can't run with a static export.
+- `app/page.tsx` and `app/layout.tsx`: replaced the starter's placeholder heading, text, buttons and page title with this site's own content.
