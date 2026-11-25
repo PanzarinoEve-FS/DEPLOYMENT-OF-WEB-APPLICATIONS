@@ -13,14 +13,33 @@
   max-width: 1400px;
 }
 
-// Three equal footer columns. Each column also has 15px of left padding,
-// so its width is a third minus 15px, the same way minima sizes its columns.
-// Screens 800px wide or narrower keep minima's layout: two columns, then a
-// single column on phones.
-@media screen and (min-width: 801px) {
+// Footer columns. minima gives each column 15px of left padding; border-box
+// counts that padding inside the width, so three 33.33% columns fit side by
+// side instead of the third one wrapping onto a new line.
+.footer-col {
+  box-sizing: border-box;
+}
+
+.footer-col-1,
+.footer-col-2,
+.footer-col-3 {
+  width: 33.33%;
+}
+
+// 800px wide or narrower: each column on its own line, 80% wide.
+@media screen and (max-width: 800px) {
   .footer-col-1,
   .footer-col-2,
   .footer-col-3 {
-    width: calc(100% / 3 - 15px);
+    width: 80%;
+    display: block;
+  }
+}
+
+// 600px wide or narrower (phones): columns stop floating and are 90% wide.
+@media screen and (max-width: 600px) {
+  .footer-col {
+    float: none;
+    width: 90%;
   }
 }
