@@ -30,7 +30,7 @@ github_username: PanzarinoEve-FS
 # More GitHub links for the footer, shown under github_username.
 # (_includes/social.html adds these; minima itself shows only one.)
 github_links:
-  - label: Main Account
+  - label: EvePanzarino
     url: https://github.com/evepanzarino
 
 # The footer's third column (_includes/footer.html): each footer line on its
@@ -38,14 +38,23 @@ github_links:
 # without is plain text. A url can be a path on this site, like /app/, or a
 # full https:// address.
 footer_lines:
-  - Full Sail University - Web Development Bachelors
+  - Full Sail University
+  - Web Development Bachelors
   - "Deployment of Web Applications:"
 course_modules:
   - title: Module 1
     url: /app/
   - title: Module 2
+    url: /module-2/
   - title: Module 3
+    url: /module-3/
   - title: Module 4
+    url: /module-4/
+
+# Pages listed in the top menu. Without this, minima lists every page that
+# has a title, which would add the module pages too.
+header_pages:
+  - about.markdown
 
 # Build settings
 theme: minima
