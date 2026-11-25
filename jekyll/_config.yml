@@ -28,7 +28,6 @@ email: jnhankins@student.fullsail.edu
 school_lines:
   - Full Sail University
   - Web Development Bachelors
-  - Deployment of Web Applications
 # Shown in the footer under the school lines.
 course_dates: "Nov 23rd, 2026 - Dec 20th, 2026"
 # Used in the page's <title> and search-result description, and in feed.xml.
