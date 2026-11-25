@@ -71,6 +71,9 @@ header_pages:
 theme: minima
 plugins:
   - jekyll-feed
+# The module posts are dated by the week each module starts. Build posts
+# dated after today too, so all four show now instead of on their dates.
+future: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.

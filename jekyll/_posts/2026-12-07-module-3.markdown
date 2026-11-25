@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Module 3
 permalink: /module-3/
 ---
