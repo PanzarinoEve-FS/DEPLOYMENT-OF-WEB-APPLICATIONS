@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // The Jekyll site has no JavaScript source, and its build output in
+    // jekyll/_site/ includes a copy of this site's compiled JavaScript.
+    "jekyll/**",
   ]),
 ]);
 

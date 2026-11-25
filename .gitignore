@@ -46,3 +46,10 @@ next-env.d.ts
 .idea
 *.suo
 *.sw?
+
+# jekyll
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor

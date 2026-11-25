@@ -1,5 +1,6 @@
-# Builds the Next.js site as a static export (output: "export" in
-# next.config.ts) and publishes the out/ folder to GitHub Pages.
+# Builds the Jekyll site in jekyll/ for the root of the site, builds the
+# Next.js site at the repo root as a static export and adds it under /app/,
+# then publishes the result to GitHub Pages.
 name: Deploy to GitHub Pages
 
 on:
@@ -27,7 +28,24 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Set up Pages
+        id: pages
         uses: actions/configure-pages@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '4.0'
+          # Runs `bundle install` from jekyll/Gemfile.lock and caches the gems.
+          bundler-cache: true
+          working-directory: jekyll
+
+      - name: Build Jekyll site
+        working-directory: jekyll
+        # base_path is /DEPLOYMENT-OF-WEB-APPLICATIONS, the sub-path Pages
+        # serves this repo from, so the theme's CSS and links resolve.
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
 
       - name: Set up Node
         uses: actions/setup-node@v7
@@ -35,16 +53,20 @@ jobs:
           node-version: 24
           cache: npm
 
-      - name: Install dependencies
+      - name: Install Next.js dependencies
         run: npm ci
 
-      - name: Build static site with Next.js
+      - name: Build Next.js site
         run: npm run build
+
+      # Runs after the Jekyll build because Jekyll empties jekyll/_site/ first.
+      - name: Add Next.js site under /app/
+        run: cp -R out jekyll/_site/app
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: ./out
+          path: jekyll/_site
 
   deploy:
     needs: build

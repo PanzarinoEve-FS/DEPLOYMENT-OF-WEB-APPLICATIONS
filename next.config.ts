@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
 
-// GitHub Pages serves this repo's site from /DEPLOYMENT-OF-WEB-APPLICATIONS/,
-// so every page and asset URL needs that prefix. Update it if the repo is renamed.
-const basePath = "/DEPLOYMENT-OF-WEB-APPLICATIONS";
+// GitHub Pages serves this repo's site from /DEPLOYMENT-OF-WEB-APPLICATIONS/.
+// The Jekyll site (in jekyll/) owns that root, so this site lives under /app/,
+// and every page and asset URL needs this prefix. Update it if the repo is renamed.
+const basePath = "/DEPLOYMENT-OF-WEB-APPLICATIONS/app";
 
 const nextConfig: NextConfig = {
   // Build a fully static site (plain HTML, CSS and JS) into out/.
