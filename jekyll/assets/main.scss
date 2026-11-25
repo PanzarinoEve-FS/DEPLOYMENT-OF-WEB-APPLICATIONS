@@ -1,0 +1,26 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minima";
+
+// Changes to the minima theme's layout. These rules come after the theme's,
+// so they win.
+
+// Let the header, page content and footer grow up to 1400px wide.
+// minima stops at 740px.
+.wrapper {
+  max-width: 1400px;
+}
+
+// Three equal footer columns. Each column also has 15px of left padding,
+// so its width is a third minus 15px, the same way minima sizes its columns.
+// Screens 800px wide or narrower keep minima's layout: two columns, then a
+// single column on phones.
+@media screen and (min-width: 801px) {
+  .footer-col-1,
+  .footer-col-2,
+  .footer-col-3 {
+    width: calc(100% / 3 - 15px);
+  }
+}
